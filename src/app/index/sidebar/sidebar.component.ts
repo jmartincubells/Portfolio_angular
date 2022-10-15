@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  
+  
+  
+  button() {
+    const sidebar = document.querySelector(".sidebar")!;
+
+
+    sidebar.classList.toggle("close");
+ 
+  }
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
+
