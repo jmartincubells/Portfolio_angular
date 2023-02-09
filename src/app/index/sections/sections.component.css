@@ -1,0 +1,23 @@
+.datos {
+    width: 80%;
+    margin: 5% 10% 0;
+    background-color: #ffffff;
+  }
+  
+  .container-img {
+    width: 75px;
+    height: 75px;
+    border-radius: 26px;
+    background-color: #F2F3F5;
+  }
+  
+  .small-img {
+    position: sticky;
+    transform: translate(0, 100%);
+  }
+  
+  /* Proyects Section */
+  
+  .proyects-card{
+    margin: 2% 0%;
+  }
