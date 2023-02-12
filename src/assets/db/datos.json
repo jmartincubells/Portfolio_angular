@@ -1,0 +1,36 @@
+{
+    "nombre": "Juan Martin",
+    "apellido": "Cubells",
+    "edad": 19,
+    "sobre mi": "",
+
+    "estudios":[
+        {
+            "id": 1,
+            "img": "",
+            "titulo": "Bachiller",
+            "instituto": "Colegio Don Bosco",
+            "inicio": "Julio 2022",
+            "fin": "",
+            "desripcion": "Especializado en ciencias naturales"
+        },
+        {
+            "id": 2,
+            "img": "",
+            "titulo": "Programador Web Full Stack",
+            "instituto": "Argentina Programa",
+            "inicio": "Julio 2022",
+            "fin": "Marzo 2023",
+            "desripcion": "Especializado en ciencias naturales"
+        },
+        {
+            "id": 3,
+            "img": "",
+            "titulo": "Python",
+            "instituto": "Mastermind",
+            "inicio": "Julio 2022",
+            "fin": "",
+            "desripcion": "Especializado en ciencias naturales"
+        }
+    ]
+}
