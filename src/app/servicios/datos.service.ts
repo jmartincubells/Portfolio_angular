@@ -6,11 +6,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DatosService {
-
-  constructor(private http: HttpClient) { }
+ // el nombre getjson es unicamente un ejemplo, puede ser cualquier nombre
+  constructor(private getjson: HttpClient) { }
 
   getDatos():Observable<any> {
 
-    return this.http.get('./assets/db/datos.json')
+    return this.getjson.get('./assets/db/datos.json')
   }
 }
