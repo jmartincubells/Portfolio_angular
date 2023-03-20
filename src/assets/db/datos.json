@@ -2,7 +2,8 @@
     "nombre": "Juan Martin",
     "apellido": "Cubells",
     "edad": 19,
-    "sobre mi": "",
+    "sobre_mi": "",
+    
 
     "estudios":[
         {
