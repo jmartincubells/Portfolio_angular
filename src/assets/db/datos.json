@@ -4,7 +4,7 @@
     "idiomas": "Español (nativo), Ingles (B2), Portugues (Basico)",
     "ubicacion": "Argentina, Chaco, Resistencia",
     "correo": "jmartincubells@gmail.com",
-    "sobre_mi": "",
+    "sobre_mi": "Desde muy joven me senti atraido por el mundo de la programacion, haciendome una persona muy autodidacta. Luego de distintos cursos, capacitaciones, entre otros, pude mejorar en desarrollo Web FullStack gracias al programa 'Argentina Programa'",
     "estudios": [
         {
             "id": 1,
@@ -134,13 +134,55 @@
         {
             "id":1,
             "skill": "Creatividad"
+        },
+        {
+            "id":2,
+            "skill": "Trabajo en equipo"
+        },
+        {
+            "id":3,
+            "skill": "Diseño en general"
+        },
+        {
+            "id":4,
+            "skill":"Facil aprendizaje"
         }
     ],
     "experiencia":[
+        {
+            "id": 3,
+            "cargo": "Personal de caja",
+            "inicio": "2021",
+            "fin": "2022",
+            "lugar": "Piedrafiel",
+            "descripcion": "Atencion al publico y vendedor"
+        },
+        {
+            "id": 3,
+            "cargo": "Programador y diseñador",
+            "inicio": "2022",
+            "fin": "2023",
+            "lugar": "Piedrafiel",
+            "descripcion": "Creacion de herramientas y solucionar problemas informaticos. Manejo de redes sociales."
+        }
 
     ],
     "proyectos":[
-
+        {
+            "id": 1,
+            "imagen": "",
+            "proyecto": "Portfolio personal",
+            "descripcion": "Proyecto final en donde se realiza el FrontEnd y BackEnd de una pagina personal",
+            "live_demo": "URL live demo",
+            "repo": "https://github.com/jmartincubells/Portfolio_angular.git"
+        },
+        {
+            "id": 2,
+            "imagen": "",
+            "proyecto": "Sistema de registro de ventas",
+            "descripcion": "Sistema pensado para mejorar el registro en el que se llevaban los pedidos de una empresa",
+            "live_demo": "URL live demo",
+            "repo": "https://github.com/jmartincubells/piedrafiel_app.git"
+        }
     ]
-    
 }
