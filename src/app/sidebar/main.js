@@ -5,3 +5,4 @@ sidebarBtn.addEventListener("click", ()=>{
 });
 
 console.log(sidebar);
+
