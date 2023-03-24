@@ -19,6 +19,7 @@ import { SkillsComponent } from './index/sections/skills/skills.component';
 import { ExperienceComponent } from './index/sections/experience/experience.component';
 import { ProyectsComponent } from './index/sections/proyects/proyects.component';
 import { ContactComponent } from './index/sections/contact/contact.component';
+import { ModalRegisterComponent } from './sidebar/modal-register/modal-register.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ContactComponent } from './index/sections/contact/contact.component';
     ExperienceComponent,
     ProyectsComponent,
     ContactComponent,
+    ModalRegisterComponent,
   ],
   imports: [
     BrowserModule,
