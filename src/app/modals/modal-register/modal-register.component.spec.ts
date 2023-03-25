@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ModalRegisterComponent } from './modal-register.component';
 
 describe('ModalRegisterComponent', () => {

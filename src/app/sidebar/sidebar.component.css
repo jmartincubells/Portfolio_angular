@@ -75,8 +75,8 @@
     margin-top: .4rem;
   }
   
-  .sidebar .nav-links li:hover {
-    background: #11101d;
+  .sidebar.close .nav-links li:hover {
+    color:#1500ff;
   }
   
   .sidebar .nav-links li .iocn-link {
@@ -115,14 +115,6 @@
     border-radius: 60px;
   }
   
-  .sidebar .nav-links li.showMenu i.arrow {
-    transform: rotate(-180deg);
-  }
-  
-  .sidebar.close .nav-links i.arrow {
-    display: none;
-  }
-  
   .sidebar .nav-links li a {
     display: flex;
     align-items: center;
@@ -145,16 +137,12 @@
   .sidebar .nav-links li .sub-menu {
     padding: 6px 6px 14px 80px;
     margin-top: -10px;
-    background: #1d1b31;
+    background: #F2F3F5;
     display: none;
   }
   
-  .sidebar .nav-links li.showMenu .sub-menu {
-    display: block;
-  }
-  
   .sidebar .nav-links li .sub-menu a {
-    color: #fff;
+    color: #009CCD;
     font-size: 15px;
     padding: 5px 0;
     white-space: nowrap;
@@ -232,7 +220,7 @@
   
   .sidebar.close .profile-details i,
   .sidebar.close .profile-details .profile_name,
-  .sidebar.close .profile-details .job {
+  .sidebar.close .profile-details .name-job {
     display: none;
   }
   
@@ -240,20 +228,10 @@
     cursor: pointer;
   }
   
-  .home-section .home-content .bx-menu,
-  .home-section .home-content .text {
-    color: #11101d;
-    font-size: 35px;
-  }
-  
-  .home-section .home-content .bx-menu {
+
+  .profile_name{
+    color:#fff;
     cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .home-section .home-content .text {
-    font-size: 26px;
-    font-weight: 600;
   }
   
   @media screen and (max-width: 400px) {
