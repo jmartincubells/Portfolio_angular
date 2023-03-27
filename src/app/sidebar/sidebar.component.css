@@ -98,7 +98,8 @@
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: #F2F3F5;
+    background-color: #c3b2a0;
+    opacity: 50%;
     border-radius: 60px;
   }
   

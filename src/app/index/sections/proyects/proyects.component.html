@@ -4,63 +4,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-3 proyects-card">
+    <div class="col-3 proyects-card" *ngFor="let data of proyectos">
         <div class="card" style="width: 18rem;">
-            <img src="assets/icons/rectangulo_ej.png" class="card-img-top" alt="...">
+            <img [src]=data.img class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of the card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-3 proyects-card">
-        <div class="card" style="width: 18rem;">
-            <img src="assets/icons/rectangulo_ej.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of the card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-3 proyects-card">
-        <div class="card" style="width: 18rem;">
-            <img src="assets/icons/rectangulo_ej.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of the card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-3 proyects-card">
-        <div class="card" style="width: 18rem;">
-            <img src="assets/icons/rectangulo_ej.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of the card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-3 proyects-card">
-        <div class="card" style="width: 18rem;">
-            <img src="assets/icons/rectangulo_ej.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                    of the card's
-                    content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">{{data.proyecto}}</h5>
+                <p class="card-text">{{data.descripcion}}</p>
+                <a [href]=data.repo class="btn btn-primary">Repositorio GitHub</a>
             </div>
         </div>
     </div>
