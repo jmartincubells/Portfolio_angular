@@ -1,14 +1,13 @@
-<!-- 
-  <div class="modal fade" id="modalRegister" aria-labelledby="modalRegister" aria-hidden="true" tabindex="-1">
+<div class="modal fade" id="modalRegister" aria-labelledby="modalRegister" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog  modal-dialog-centered">
       <div class="modal-content">
   
       
         <div class="modal-header">
-          <h5 class="modal-title" id="modalRegister">Registrate</h5>
+          <h5 class="modal-title" id="modalRegister">Iniciar Sesion</h5>
         </div>
   
-        <form [formGroup]="register_form" (ngSubmit)="onSubmit($event)" id="register_form">
+        <form [formGroup]="register_form" (ngSubmit)="onEnviar($event)" id="register_form">
           <div class="modal-body">
   
             <div class="mb-3">
@@ -16,7 +15,8 @@
               <input type="text" formControlName="username" id="usernameLogin" placeholder="  Username" class="col-12" [class.border-danger]="UsernameInvalid" aria-describedby="usernameHelp">
               <div *ngIf="Username?.errors  && Username?.touched" class="mb-4">
                 <small *ngIf="Username?.hasError('required')" class="error text-small"><i>Username requerido.</i></small>
-                <small *ngIf="Username?.hasError('minlength')" class="error text-small"><i>Debe tener entre 6 y 20 caracteres.</i></small>
+                <!-- puede haber un error por usar el supuesto or -->
+                <small *ngIf="Username?.hasError('minlength') || Username?.hasError('maxlength')" class="error text-small"><i>Debe tener entre 6 y 20 caracteres.</i></small>
               </div>
             </div>
   
@@ -44,7 +44,7 @@
             </div>
   
             <div class="modal-footer">
-              <small>Si ya tenés cuenta <a data-bs-target="#modalLogin" data-bs-toggle="modal"><b>iniciá sesión</b></a></small>
+              <small><a data-bs-target="#modalLogin" data-bs-toggle="modal"><b>iniciá sesión</b></a></small>
             </div>
   
           </div>
@@ -54,32 +54,5 @@
   </div>
   
           
-    <a data-bs-toggle="modal" href="#modalLogin" role="button"> <i class="fa-solid fa-user-lock fa-lg me-5 text-dark"></i></a> -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Inicio de Sesion</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <div class="mb-3 row">
-                      <label for="staticEmail" class="col-sm-2 col-form-label">Correo</label>
-                      <div class="col-sm-10">
-                      <input type="text" class="form-control-plaintext" id="staticEmail" value="email@example.com">
-                      </div>
-                  </div>
-                  <div class="mb-3 row">
-                      <label for="inputPassword" class="col-sm-2 col-form-label">Contraseña</label>
-                      <div class="col-sm-10">
-                      <input type="password" class="form-control" id="inputPassword">
-                      </div>
-                  </div>
-              </div>
-              <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                  <button type="button" class="btn btn-success">Iniciar</button>
-              </div>
-          </div>
-      </div>
-  </div>
+    <a data-bs-toggle="modal" href="#modalLogin" role="button"> <i class="fa-solid fa-user-lock fa-lg me-5 text-dark"></i></a>
+    

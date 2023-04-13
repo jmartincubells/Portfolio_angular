@@ -6,89 +6,68 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './modal-register.component.html',
   styleUrls: ['./modal-register.component.css']
 })
+
 export class ModalRegisterComponent implements OnInit {
+  register_form!: FormGroup;
+  /*   username!: FormControl;
+    email!: FormControl;
+    password!: FormControl; */
 
-  constructor() {}
+  submitted = false;
 
-  
-  ngOnInit(): void {
-    
+  constructor(private formBuilder: FormBuilder) {
+    this.register_form = this.formBuilder.group(
+      {
+        username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
+      },
+      /* {validators: [Validation.match('password', 'confirmPassword')]} */
+    );
   }
-
-} 
-/*
-export class ModalRegisterComponent implements OnInit {
-  login_form: FormGroup;
-
-  email='';
-  clave='';
-
-  // persona: Persona = new Persona("", "", "", "", "", "");
-
-
-  constructor(private formBuilder: FormBuilder, private autenService: AuthService, private ruta: Router) {
-    // Creamos el grupo de controles para el formulario de login
-    this.login_form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      clave: ['', [Validators.required, Validators.minLength(8)]],
-    })
-  }
-   
 
   ngOnInit(): void {
-    sessionStorage.setItem('currentUser', "");
   }
 
-  // Métodos para obtener los controles del formulario y validarlos
-  get Clave() {
-    return this.login_form.get("clave");
+  //estos son todos métodos
+  get Username() {
+    return this.register_form.get("username");
+  }
+  get UsernameInvalid() {
+    return this.Username?.touched && !this.Username?.valid;
+  }
+  get Mail() {
+    return this.register_form.get("email");
+  }
+  get MailInvalid() {
+    return this.Mail?.touched && !this.Mail?.valid;
+  }
+  get Password() {
+    return this.register_form.get("password");
+  }
+  // ayuda mas adelante a cambiar el color del borde a rojo
+  get PasswordInvalid() {
+    return this.Password?.touched && !this.Password?.valid;
   }
 
-  get Email() {
-    return this.login_form.get("email");
+  onEnviar(event: Event) {
+    // Detenemos la propagación o ejecución del comportamiento submit de un form
+    event.preventDefault;
+
+    if (this.register_form.valid) {
+      // Llamamos a nuestro servicio para enviar los datos al servidor
+      // También podríamos ejecutar alguna lógica extra
+      alert("Todo en orden. Ya puede enviar su formulario.");
+    } else {
+      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
+      this.register_form.markAllAsTouched()
+      alert("Revise su formulario.");
+    }
   }
 
-  get ClaveValid() {
-    return this.Clave?.touched && !this.Clave?.valid;
+  onReset(): void {
+    this.submitted = false;
+    this.register_form.reset();
   }
 
-  get EmailValid() {
-    return this.Email?.touched && !this.Email?.valid;
-  }
-
-
-onEnviar(event: Event) {
-  event.preventDefault;
-  if (this.login_form.valid) {
-    //console.log(JSON.stringify(this.login_form.value));
-    this.autenService.login(this.login_form.value).subscribe(data => {
-      console.log("DATA: " + JSON.stringify(data.id));
-      if (data.id) {
-        alert("Ingresando al portfolio");
-        this.ruta.navigate(['aadmin']);
-      } else {
-        alert("Credenciales no válidas");
-      }
-    },  /* error => {
-      alert("ERROR!!!"); 
-    })
-  } else {
-    sessionStorage.setItem('currentUser', "");
-    alert("Error! No tienes acceso");
-    this.ruta.navigate(['/']);
-  }
 }
-
-
-reset() {
-  console.log("Se limpió el formulario");
-  this.login_form.reset();
-  this.ruta.navigate(['']);
-}
-
-
-back(){
-  this.ruta.navigate(['/']);
-}
-
-}*/
