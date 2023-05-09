@@ -1,0 +1,70 @@
+<!--MODAL cursos-->
+<div class="modal" id="cursosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Cursos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="curs">
+          <form [formGroup]="form" class="row g-3">
+            <ul class="p-0">
+              <li *ngFor="let curso of cursitos" class="d-flex justify-content-between align-items-center m-1 ">
+                <span>{{curso.id}}. {{curso.titulo|uppercase}}</span>
+                <span class="d-flex justify-content-between gap-2">
+                <!--lapicito rojo que se cambia al tocarlo-->
+                  <button type="button" class="btn btn-sm btn-outline-success pl-1 pr-1 m-0" (click)="cargarDetalle(curso.id)">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <!--Tachito de Basura que se hace fondo rojo al tocarlo-->
+                  <button type="button" class="btn btn-sm btn-outline-danger pl-1 pr-1 m-0" (click)="borrar(curso.id)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </span>
+              </li>
+            </ul>
+            <!--esto es la validacion  renderizado condicional-->
+            <div class="input-group mb-3 bg-light" *ngIf="!!form.value.id">
+              <div class="input-group-prepend border-0">
+                <span class="input-group-text border-0" id="basic-addon1">ID:</span>
+              </div>
+              <input class="form-control outline-none border-0 bg-transparent" type="text" readonly formControlName="id">
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Título</label>
+              <input class="form-control" type="text" formControlName="titulo" [ngClass]="{'is-invalid': form.get('titulo')?.errors && form.get('titulo')?.touched, 'is-valid': form.get('titulo')?.errors && form.get('titulo')?.touched}">
+              <p class="text-danger" *ngIf="form.get('titulo')?.touched && form.get('titulo')?.errors?.['required']">
+               El titulo es requerido.
+                  </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Descripción</label>
+              <textarea class="form-control" type="text"  formControlName="descripcion" [ngClass]="{'is-invalid': form.get('descripcion')?.errors && form.get('descripcion')?.touched, 'is-valid': form.get('descripcion')?.errors && form.get('descripcion')?.touched}"></textarea>
+              <p class="text-danger" *ngIf="form.get('descripcion')?.touched && form.get('descripcion')?.errors?.['required']">
+                La descripcion es requerida.
+                   </p>
+              
+            </div>
+            <div class="fecha">
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Año</label>
+              <input class="form-control" type="text" formControlName="fecha" [ngClass]="{'is-invalid': form.get('fecha')?.errors && form.get('fecha')?.touched, 'is-valid': form.get('fecha')?.errors && form.get('fecha')?.touched}" 
+               [ngModel]="initialDate | date:'yyyy'">
+              <p class="text-danger" *ngIf="form.get('fecha')?.touched && form.get('fecha')?.errors?.['required']">
+                La fecha es requerida.
+                   </p>
+                  </div>
+                </div>
+                 
+
+          <div class="modal-footer">
+           <button class="btn btn-secondary" (click)="form.reset()">RESET</button>
+            <button class="btn btn-secondary" (click)="guardar()"[disabled]="form.invalid">GUARDAR DATOS</button>
+        </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+

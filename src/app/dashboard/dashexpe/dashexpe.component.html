@@ -1,0 +1,84 @@
+<!--MODAL experiencia-->
+<div class="modal" id="experienciaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Experiencia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="expe">
+          <form [formGroup]="form" class="row g-3">
+            <ul class="p-0">
+              <li *ngFor="let experiencia of experiencias" class="d-flex justify-content-between align-items-center m-1 ">
+                  <span>{{experiencia.id}}. {{experiencia.puesto|uppercase}}</span>
+                  <span class="d-flex justify-content-between gap-2">
+                      <!--Lapiz para editar-->
+                      <button type="button" class="btn btn-sm btn-outline-success pl-1 pr-1 m-0"
+                          (click)="cargarDetalle(experiencia.id)">
+                          <i class="fa-solid fa-pen"></i>
+                      </button>
+                      <!--Boton para borrar-->
+                      <button type="button" class="btn btn-sm btn-outline-danger pl-1 pr-1 m-0"
+                          (click)="borrar(experiencia.id)">
+                          <i class="fa-solid fa-trash"></i>
+                      </button>
+                  </span>
+              </li>
+          </ul>
+           <!--validacion condicional-->
+           <div class="input-group mb-3 bg-light" *ngIf="!!form.value.id">
+            <div class="input-group-prepend border-0">
+              <span class="input-group-text border-0" id="basic-addon1">ID:</span>
+            </div>
+            <input class="form-control outline-none border-0 bg-transparent" type="text" readonly formControlName="id">
+          </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Puesto</label>
+              <input class="form-control" type="text" formControlName="puesto" [ngClass]="{'is-invalid': form.get('puesto')?.errors && form.get('puesto')?.touched, 'is-valid': form.get('puesto')?.errors && form.get('puesto')?.touched}">
+              <p class="text-danger" *ngIf="form.get('puesto')?.touched && form.get('puesto')?.errors?.['required']">
+                La información es requerida.
+                  </p>
+            </div>
+            <div class="fecha">
+            <div class="mb-3 row" >
+              <label for="formFile" class="form-label">Desde</label>
+                <input class="form-control" type="text" formControlName="inicio" [ngClass]="{'is-invalid': form.get('inicio')?.errors && form.get('inicio')?.touched, 'is-valid': form.get('inicio')?.errors && form.get('inicio')?.touched}" 
+                [ngModel]="initialDate | date:'yyyy'">
+                <p class="text-danger" *ngIf="form.get('inicio')?.touched && form.get('inicio')?.errors?.['required']">
+                  La fecha de inicio es requerida.
+                     </p>
+            </div>
+             <div class="mb-3 row">
+              <label for="formFile" class="form-label">Hasta</label>
+                <input class="form-control" type="text" formControlName="fin" [ngClass]="{'is-invalid': form.get('fin')?.errors && form.get('fin')?.touched, 'is-valid': form.get('fin')?.errors && form.get('fin')?.touched}"
+                 [ngModel]="initialDate | date:'yyyy'">
+                <p class="text-danger" *ngIf="form.get('fin')?.touched && form.get('fin')?.errors?.['required']">
+                  La fecha de fin es requerida.
+                     </p>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Empresa</label>
+              <input class="form-control" type="text" formControlName="empresa" [ngClass]="{'is-invalid': form.get('empresa')?.errors && form.get('empresa')?.touched, 'is-valid': form.get('empresa')?.errors && form.get('empresa')?.touched}">
+              <p class="text-danger" *ngIf="form.get('empresa')?.touched && form.get('empresa')?.errors?.['required']">
+                El nombre de la empresa es requerida.
+                   </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Tareas</label>
+              <textarea class="form-control" type="text"  formControlName="tareas" [ngClass]="{'is-invalid': form.get('tareas')?.errors && form.get('tareas')?.touched, 'is-valid': form.get('tareas')?.errors && form.get('tareas')?.touched}"></textarea>
+              <p class="text-danger" *ngIf="form.get('tareas')?.touched && form.get('tareas')?.errors?.['required']">
+                Las tareas son requeridas.
+                   </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="form.reset()">RESET</button>
+               <button class="btn btn-secondary" (click)="guardar()"[disabled]="form.invalid">GUARDAR DATOS</button>
+           </div>
+     </form>
+    </div>
+  </div>
+</div>
+</div>
+

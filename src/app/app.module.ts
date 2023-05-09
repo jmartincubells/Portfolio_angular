@@ -20,6 +20,9 @@ import { ExperienceComponent } from './index/sections/experience/experience.comp
 import { ProyectsComponent } from './index/sections/proyects/proyects.component';
 import { ContactComponent } from './index/sections/contact/contact.component';
 import { ModalRegisterComponent } from './modals/modal-register/modal-register.component';
+import { DashbannerComponent } from './dashboard/dashbanner/dashbanner.component';
+import { DashcursosComponent } from './dashboard/dashcursos/dashcursos.component';
+import { DashdatosperComponent } from './dashboard/dashdatosper/dashdatosper.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,11 @@ import { ModalRegisterComponent } from './modals/modal-register/modal-register.c
     ProyectsComponent,
     ContactComponent,
     ModalRegisterComponent,
+    DashbannerComponent,
+    DashcursosComponent,
+    DashdatosperComponent,
+    DashdatosperComponent,
+    das
   ],
   imports: [
     BrowserModule,

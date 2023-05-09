@@ -1,0 +1,140 @@
+<!--MODAL Skills-->
+<div class="modal" id="skillsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Skills</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body" id="skill">
+          <form [formGroup]="form" class="row g-3">
+          <ul class="p-0">
+            <li *ngFor="let skill of skills" class="d-flex justify-content-between align-items-center m-1 ">
+              <span>{{skill.id}} - {{skill.lenguaje|uppercase}}</span>
+              <span class="d-flex justify-content-between gap-2">
+              <!--lapicito rojo que se cambia al tocarlo-->
+                <button type="button" class="btn btn-sm btn-outline-success pl-1 pr-1 m-0" (click)="cargar(skill.id)">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+                <!--Tachito de Basura que se hace fondo rojo al tocarlo-->
+                <button type="button" class="btn btn-sm btn-outline-danger pl-1 pr-1 m-0" (click)="borrar(skill.id)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </span>
+            </li>
+          </ul>
+          <!--esto es la validacion  renderizado condicional-->
+          <div class="input-group mb-3 bg-light" *ngIf="!!form.value.id">
+            <div class="input-group-prepend border-0">
+              <span class="input-group-text border-0" id="basic-addon1">ID:</span>
+            </div>
+            <input class="form-control outline-none border-0 bg-transparent" type="text" readonly formControlName="id">
+          </div>
+
+
+        
+          <div class="mb-3 row">
+            <label for="formFileSm" class="form-label">Lenguaje</label>
+            <input type="text" class="form-control" id="lenguaje" formControlName="lenguaje" name=""
+            [ngClass]="{'is-invalid': HabilidadInvalido, 'is-valid': HabilidadValido}">
+            
+            <!-- Se verifica si cumple con el formato -->
+            <div *ngIf="Habilidad?.errors && Habilidad?.touched">
+                <p *ngIf="Habilidad?.hasError('required')" class="errores">
+                    Campo requerido.
+                </p>
+                <p *ngIf="Habilidad?.errors?.['minlength']" class="errores">
+                    Debe ser de 2 o más caracteres.
+                </p>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="formFileSm" class="form-label">Porcentaje</label>
+            <input type="number" class="form-control" id="porcentaje" formControlName="porcentaje" name=""
+            [ngClass]="{'is-invalid': PorcentajeInvalido, 'is-valid': PorcentajeValido}">
+            
+            <!-- Se verifica si cumple con el formato -->
+            <div *ngIf="Porcentaje?.errors && Porcentaje?.touched">
+                <p *ngIf="Porcentaje?.hasError('required')" class="errores">
+                    Campo requerido.
+                </p>
+                <p *ngIf="Porcentaje?.errors?.['minlength']" class="errores">
+                  Debe ser de tipo numérico y <= 100
+                </p>
+            </div>
+        </div>
+        <input type="hidden" name="" id="id">
+        <div class="modal-footer">
+            <button type="button" (click)="guardar()" class="btn btn-dark" data-bs-dismiss="modal" [disabled]="form.invalid">Guardar</button>
+            <button type="button" (click)="limpiar()" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+        </div>
+    </form>
+</div>
+       <!--<section id="dashskills" class="skills mt-5">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="titulo-skills">
+                      <h1 class="text-center linea-skills">Skills</h1>
+                  </div>
+                  <div class="mt-3 mb-2 caja-skills">
+                      <div class="text-center">
+                          <button type="button" class="btn btn-success nuevo text-center" data-bs-toggle="modal" data-bs-target="#skillsModal">Nuevo Skill</button>
+                          <button class="btn btn-dark volver" (click)="volver()" title="Volver a Dashboard"><i class="fa-solid fa-rotate-left"></i></button>
+                      </div>
+                      <hr>
+                      <ul>
+                          <div *ngFor="let habils of skills">
+                              <li class="list-group-item mt-5">
+                                  <div class="container row">
+                                      <div class="col-8 col-md-10">
+                                          <p>Link de la red social: {{item.url}}</p>
+                                          <p>Ícono de fontawesome de la red: {{item.icono}} <i [ngClass]="item.icono" class="fa-lg text-white m-0 p-0"></i></p>
+                                      </div>
+                                      <div class="col-1 col-md-2 text-center">
+                                          <div>
+                                              <button class="btn btn-success m-2" (click)="item.id? cargarItem(item.id): null" data-bs-toggle="modal" data-bs-target="#ModalRedes" title="Editar">
+                                                  <i class="fa-solid fa-pen-clip"></i>
+                                              </button>
+                                          </div>
+                                          <div>
+                                              <button class="btn btn-danger m-2" (click)="item.id ? borrarItem(item.id) : null" title="Eliminar">
+                                                  <i class="fa-solid fa-trash-can"></i>
+                                              </button>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <hr class="linea">
+                              </li>
+                          </div>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        </section>
+
+
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Puesto</label>
+              <input class="form-control" type="text">
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Año</label>
+              <input class="form-control" type="text">
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Descripción</label>
+              <textarea class="form-control" type="text"></textarea>
+            </div>
+          </form>
+        </div>
+          <div class="modal-footer">
+          <button type="button" class="btn btn-primary"> Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div> --> 
+

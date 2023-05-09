@@ -1,8 +1,10 @@
-<div class="modal fade" id="modalRegister" aria-labelledby="modalRegister" aria-hidden="true" tabindex="-1">
+<button type="button" class="btn login_btn px-2 me-2 login_btn text-success bg-success bg-opacity-10 border border-success border-opacity-10 rounded-2" data-bs-toggle="modal" data-bs-target="#modalRegister">
+  Iniciar Sesion
+</button>
+<!-- data-bs-backdrop arrgla el problema del fixed position --> 
+<div class="modal fade" data-bs-backdrop="false" id="modalRegister" aria-labelledby="modalRegister" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog  modal-dialog-centered">
       <div class="modal-content">
-  
-      
         <div class="modal-header">
           <h5 class="modal-title" id="modalRegister">Iniciar Sesion</h5>
         </div>
@@ -52,7 +54,5 @@
       </div>
     </div>
   </div>
-  
-          
-    <a data-bs-toggle="modal" href="#modalLogin" role="button"> <i class="fa-solid fa-user-lock fa-lg me-5 text-dark"></i></a>
+   
     

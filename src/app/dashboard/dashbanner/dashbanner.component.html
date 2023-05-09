@@ -1,0 +1,94 @@
+<!--MODAL banner-->
+<div class="modal" id="bannerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Banner</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body" id="perso">
+          <form [formGroup]="form" class="row g-3">
+            <ul class="p-0">
+              <li *ngFor="let pers of personas" class="d-flex justify-content-between align-items-center m-1 ">
+                <span>{{pers.id}} - {{pers.nombre|uppercase}}</span>
+                <span class="d-flex justify-content-between gap-2">
+                <!--lapicito rojo que se cambia al tocarlo-->
+                  <button type="button" class="btn btn-sm btn-outline-success pl-1 pr-1 m-0" (click)="cargarDetalle(pers.id)">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <!--Tachito de Basura que se hace fondo rojo al tocarlo-->
+                  <button type="button" class="btn btn-sm btn-outline-danger pl-1 pr-1 m-0" (click)="borrar(pers.id)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </span>
+              </li>
+            </ul>
+            <!--esto es la validacion  renderizado condicional-->
+            <div class="input-group mb-3 bg-light" *ngIf="!!form.value.id">
+              <div class="input-group-prepend border-0">
+                <span class="input-group-text border-0" id="basic-addon1">ID:</span>
+              </div>
+              <input class="form-control outline-none border-0 bg-transparent" type="text" readonly formControlName="id">
+            </div>
+
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Nombre</label>
+              <input class="form-control" type="text" formControlName="nombre" [ngClass]="{'is-invalid': form.get('nombre')?.errors && form.get('nombre')?.touched, 'is-valid': form.get('nombre')?.errors && form.get('nombre')?.touched}">
+              <p class="text-danger" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.errors?.['required']">
+                El nombre es requerido.
+                   </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Apellido</label>
+              <input class="form-control" type="text" formControlName="apellido" [ngClass]="{'is-invalid': form.get('apellido')?.errors && form.get('apellido')?.touched, 'is-valid': form.get('apellido')?.errors && form.get('apellido')?.touched}">
+              <p class="text-danger" *ngIf="form.get('apellido')?.touched && form.get('apellido')?.errors?.['required']">
+                El apellido es requerido.
+                   </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Edad</label>
+              <input class="form-control" type="text" formControlName="edad" [ngClass]="{'is-invalid': form.get('edad')?.errors && form.get('edad')?.touched, 'is-valid': form.get('edad')?.errors && form.get('edad')?.touched}">
+              <p class="text-danger" *ngIf="form.get('edad')?.touched && form.get('edad')?.errors?.['required']">
+                La edad es requerida.
+                   </p>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label"> Imagen de Banner</label>
+              <input class="form-control" type="text" formControlName="banner" [ngClass]="{'is-invalid': form.get('banner')?.errors && form.get('banner')?.touched, 'is-valid': form.get('banner')?.errors && form.get('banner')?.touched}">
+              <p *ngIf="form.get('banner')?.touched && form.get('banner')?.errors?.['required']"class="text-danger">
+                El banner es requerido.
+                   </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Título</label>
+              <input class="form-control" type="text" formControlName="titulo" [ngClass]="{'is-invalid': form.get('titulo')?.errors && form.get('titulo')?.touched, 'is-valid': form.get('titulo')?.errors && form.get('titulo')?.touched}">
+              <p class="text-danger" *ngIf="form.get('titulo')?.touched && form.get('titulo')?.errors?.['required']">
+                El título es requerido.
+                   </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Email</label>
+              <input class="form-control" type="text" formControlName="email" [ngClass]="{'is-invalid': form.get('email')?.errors && form.get('email')?.touched, 'is-valid': form.get('email')?.errors && form.get('email')?.touched}">
+              <p class="text-danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
+                El email es requerido.
+                   </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Password</label>
+              <input class="form-control" type="text" formControlName="password" [ngClass]="{'is-invalid': form.get('password')?.errors && form.get('password')?.touched, 'is-valid': form.get('password')?.errors && form.get('password')?.touched}">
+              <p class="text-danger" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
+                La contraseña es requerida.
+                   </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="form.reset()">RESET</button>
+               <button class="btn btn-secondary" (click)="guardar()">GUARDAR DATOS</button>
+           </div>
+          </form>
+      </div>
+    </div>
+  </div>
+

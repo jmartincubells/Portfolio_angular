@@ -1,0 +1,74 @@
+<!--MODAL sobremi-->
+<div class="modal" id="sobremiModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Sobre mi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="sobremi">
+          <form [formGroup]="form" class="row g-3">
+            <ul class="p-0">
+              <li *ngFor="let about of sobremis" class="d-flex justify-content-between align-items-center m-1 ">
+                  <span>{{about.id}}. {{about.info|uppercase}}</span>
+                  <span class="d-flex justify-content-between gap-2">
+                      <!--Lapiz para editar-->
+                      <button type="button" class="btn btn-sm btn-outline-success pl-1 pr-1 m-0"
+                          (click)="cargarDetalle(about.id)">
+                          <i class="fa-solid fa-pen"></i>
+                      </button>
+                      <!--Boton para borrar-->
+                      <button type="button" class="btn btn-sm btn-outline-danger pl-1 pr-1 m-0"
+                          (click)="borrar(about.id)">
+                          <i class="fa-solid fa-trash"></i>
+                      </button>
+                  </span>
+              </li>
+          </ul>
+          <!--validacion condicional-->
+          <div class="input-group mb-3 bg-light" *ngIf="!!form.value.id">
+            <div class="input-group-prepend border-0">
+              <span class="input-group-text border-0" id="basic-addon1">ID:</span>
+            </div>
+            <input class="form-control outline-none border-0 bg-transparent" type="text" readonly formControlName="id">
+          </div>
+            
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Info</label>
+              <textarea class="form-control" type="text" formControlName="info" [ngClass]="{'is-invalid': form.get('info')?.errors && form.get('info')?.touched, 'is-valid': form.get('info')?.errors && form.get('info')?.touched}"></textarea>
+                <p *ngIf="form.get('info')?.touched && form.get('info')?.errors?.['required']"class="text-danger">
+             La información es requerida.
+                </p>
+              </div>
+            
+            <div class="mb-3 row">
+              <label for="formFileSm" class="form-label">Imagen</label>
+              <input class="form-control" type="text"  formControlName="imagen" [ngClass]="{'is-invalid': form.get('imagen')?.errors && form.get('imagen')?.touched, 'is-valid': form.get('imagen')?.errors && form.get('imagen')?.touched}">
+                <p *ngIf="form.get('imagen')?.touched && form.get('imagen')?.errors?.['required']" class="text-danger">
+             La imagen es requerida.
+                </p>
+              </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Fondo Sobre mi</label>
+              <input class="form-control" type="text"  formControlName="fondo"  [ngClass]="{'is-invalid': form.get('fondo')?.errors && form.get('fondo')?.touched, 'is-valid': form.get('fondo')?.errors && form.get('fondo')?.touched}">
+                <p *ngIf="form.get('fondo')?.touched && form.get('fondo')?.errors?.['required']" class="text-danger">
+             La imagen de fondo es requerida.
+                </p>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="form.reset()">RESET</button>
+           <button class="btn btn-secondary" (click)="guardar()"[disabled]="form.invalid">GUARDAR DATOS</button>
+       </div>
+
+          <!--<div class="modal-footer">
+          <button  type="button" class="btn btn-primary" (click)="guardar()" [disabled]="form.invalid"> Guardar</button>
+          <button type="button" class="btn btn-warning"> Editar</button>
+          <button type="button" class="btn btn-danger" (click)="borrar(id)"> Eliminar</button>
+        </div>-->
+      </div>
+    </div>
+  </div>
+

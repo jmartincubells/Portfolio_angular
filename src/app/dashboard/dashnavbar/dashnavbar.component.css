@@ -1,0 +1,6 @@
+/*Barra de navegacion*/
+.navbar.navbar-expand-lg.bg-info{
+    background: rgb(34,193,195);
+background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(19,0,37,1) 100%);
+}
+

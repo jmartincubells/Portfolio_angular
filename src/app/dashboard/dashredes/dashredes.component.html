@@ -1,0 +1,103 @@
+<!--MODAL redes-->
+
+<div class="modal" id="redesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal">Redes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+<section id="dashredes" class="redes mt-5">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="titulo-red">
+              <h1 class="text-center linea-red">REDES</h1>
+          </div>
+          <div class="mt-3 mb-2 caja-red">
+              <div class="text-center">
+                  <button type="button" class="btn btn-success nuevo text-center" data-bs-toggle="modal" data-bs-target="#ModalRedes">Nuevo Item</button>
+                  <button class="btn btn-dark volver" (click)="volver()" title="Volver a Dashboard"><i class="fa-solid fa-rotate-left"></i></button>
+              </div>
+              <hr>
+              <ul>
+                  <div *ngFor="let item of redes">
+                      <li class="list-group-item mt-5">
+                          <div class="container row">
+                              <div class="col-8 col-md-10">
+                                  <p>Link de la red social: {{item.url}}</p>
+                                  <p>Ícono de fontawesome de la red: {{item.icono}} <i [ngClass]="item.icono" class="fa-lg text-white m-0 p-0"></i></p>
+                              </div>
+                              <div class="col-1 col-md-2 text-center">
+                                  <div>
+                                      <button class="btn btn-success m-2" (click)="item.id? cargarItem(item.id): null" data-bs-toggle="modal" data-bs-target="#ModalRedes" title="Editar">
+                                          <i class="fa-solid fa-pen-clip"></i>
+                                      </button>
+                                  </div>
+                                  <div>
+                                      <button class="btn btn-danger m-2" (click)="item.id ? borrarItem(item.id) : null" title="Eliminar">
+                                          <i class="fa-solid fa-trash-can"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr class="linea">
+                      </li>
+                  </div>
+              </ul>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- ...............Inicio de Modal para Redes -->
+
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="ModalRedesLabel">Redes</h4>
+              <button type="button" (click)="limpiar()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form [formGroup]="form">
+                  
+                  <div class="mb-3 row">
+                      <label for="formFileSm" class="form-label">Link de la red social</label>
+                      <input type="text" class="form-control" id="url" formControlName="url" name="" placeholder="Ej: https://website.com"
+                      [ngClass]="{'is-invalid': UrlInvalido, 'is-valid': UrlValido}">
+                      
+                      <!-- Se verifica si cumple con el formato -->
+                      <div *ngIf="Url?.errors && Url?.touched">
+                          <p *ngIf="Url?.hasError('required')" class="errores">
+                              Campo requerido.
+                          </p>
+                          <p *ngIf="Url?.errors?.['minlength']" class="errores">
+                              Debe ser de 2 o más caracteres.
+                          </p>
+                      </div>
+                  </div>
+                  <div class="mb-3 row">
+                      <label for="formFileSm" class="form-label">Ícono de la red social</label>
+                      <input type="text" class="form-control" id="icono" formControlName="icono" name="" placeholder="Ej: fa-brands fa-linkedin..."
+                      [ngClass]="{'is-invalid': IconoInvalido, 'is-valid': IconoValido}">
+                      
+                      <!-- Se verifica si cumple con el formato -->
+                      <div *ngIf="Icono?.errors && Icono?.touched">
+                          <p *ngIf="Icono?.hasError('required')" class="errores">
+                              Campo requerido.
+                          </p>
+                          <p *ngIf="Icono?.errors?.['minlength']" class="errores">
+                              Debe ser de 2 o más caracteres.
+                          </p>
+                      </div>
+                      <p>Haga <a href="https://fontawesome.com/search">click aquí</a> para buscar el ícono</p>
+                  </div>
+                  <input type="hidden" name="" id="id">
+                  <div class="modal-footer">
+                      <button type="button" (click)="guardarItem()" class="btn btn-dark" data-bs-dismiss="modal" [disabled]="form.invalid">Guardar</button>
+                      <button type="button" (click)="limpiar()" class="btn btn-secondary" data-bs-dismiss="modal">Volver</button>
+                  </div>
+              </form>
+          </div>
+  </div>
+</div>

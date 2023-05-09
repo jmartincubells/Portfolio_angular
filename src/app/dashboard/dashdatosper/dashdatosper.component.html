@@ -1,0 +1,109 @@
+<!--MODAL datospersonales-->
+<div class="modal" id="datosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal">Datos personales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div>
+          <div class="modal-body" id="datosper">
+            <form [formGroup]="form" class="row g-3">
+              <ul class="p-0">
+                <li *ngFor="let datoper of datosper" class="d-flex justify-content-between align-items-center m-1 ">
+                    <span>{{datoper.id}}. {{datoper.nombreyapellido|uppercase}}</span>
+                    <span class="d-flex justify-content-between gap-2">
+                        <!--Lapiz para editar-->
+                        <button type="button" class="btn btn-sm btn-outline-success pl-1 pr-1 m-0"
+                            (click)="cargarDetalle(datoper.id)">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <!--Boton para borrar-->
+                        <button type="button" class="btn btn-sm btn-outline-danger pl-1 pr-1 m-0"
+                            (click)="borrar(datoper.id)">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </span>
+                </li>
+            </ul>
+             <!--validacion condicional-->
+             <div class="input-group mb-3 bg-light" *ngIf="!!form.value.id">
+              <div class="input-group-prepend border-0">
+                <span class="input-group-text border-0" id="basic-addon1">ID:</span>
+              </div>
+              <input class="form-control outline-none border-0 bg-transparent" type="text" readonly formControlName="id">
+            </div>
+            <div class="mb-3 row" >
+              <label for="formFile" class="form-label">Nombre y Apellido</label>
+                <input class="form-control" type="text" formControlName="nombreyapellido" [ngClass]="{'is-invalid': form.get('nombreyapellido')?.errors && form.get('nombreyapellido')?.touched, 'is-valid': form.get('nombreyapellido')?.errors && form.get('nombreyapellido')?.touched}">
+                <p class="text-danger" *ngIf="form.get('nombreyapellido')?.touched && form.get('nombreyapellido')?.errors?.['required']">
+                El nombre y apellido es requerido.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Domicilio</label>
+              <input class="form-control" type="text"  formControlName="domicilio" [ngClass]="{'is-invalid': form.get('domicilio')?.errors && form.get('domicilio')?.touched, 'is-valid': form.get('domicilio')?.errors && form.get('domicilio')?.touched}">
+              <p class="text-danger" *ngIf="form.get('domicilio')?.touched && form.get('domicilio')?.errors?.['required']">
+                El domicilio es requerido.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Barrio</label>
+              <input class="form-control" type="text"  formControlName="barrio" [ngClass]="{'is-invalid': form.get('barrio')?.errors && form.get('barrio')?.touched, 'is-valid': form.get('barrio')?.errors && form.get('barrio')?.touched}">
+              <p class="text-danger" *ngIf="form.get('barrio')?.touched && form.get('barrio')?.errors?.['required']">
+                El barrio es requerido.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Disponibilidad</label>
+              <input class="form-control" type="text"  formControlName="disponibilidad" [ngClass]="{'is-invalid': form.get('disponibilidad')?.errors && form.get('disponibilidad')?.touched, 'is-valid': form.get('disponibilidad')?.errors && form.get('disponibilidad')?.touched}">
+              <p class="text-danger" *ngIf="form.get('disponibilidad')?.touched && form.get('disponibilidad')?.errors?.['required']">
+                La disponibilidad es requerida.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Estado Civil</label>
+              <input class="form-control" type="text"  formControlName="estadocivil" [ngClass]="{'is-invalid': form.get('estadocivil')?.errors && form.get('estadocivil')?.touched, 'is-valid': form.get('estadocivil')?.errors && form.get('estadocivil')?.touched}">
+              <p class="text-danger" *ngIf="form.get('estadocivil')?.touched && form.get('estadocivil')?.errors?.['required']">
+                El estado civil es requerido.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Lugar y fecha de nacimiento</label>
+              <input class="form-control" type="text"  formControlName="fechanacimiento" [ngClass]="{'is-invalid': form.get('fechanacimiento')?.errors && form.get('fechanacimiento')?.touched, 'is-valid': form.get('fechanacimiento')?.errors && form.get('fechanacimiento')?.touched}">
+              <p class="text-danger" *ngIf="form.get('fechanacimiento')?.touched && form.get('fechanacimiento')?.errors?.['required']">
+                La fecha de nacimiento es requerida.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Contacto</label>
+              <input class="form-control" type="text"  formControlName="contacto" [ngClass]="{'is-invalid': form.get('contacto')?.errors && form.get('contacto')?.touched, 'is-valid': form.get('contacto')?.errors && form.get('contacto')?.touched}">
+              <p class="text-danger" *ngIf="form.get('contacto')?.touched && form.get('contacto')?.errors?.['required']">
+                El número de contacto es requerido.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Alternativo</label>
+              <input class="form-control" type="text"  formControlName="alternativo" [ngClass]="{'is-invalid': form.get('alternativo')?.errors && form.get('alternativo')?.touched, 'is-valid': form.get('alternativo')?.errors && form.get('alternativo')?.touched}">
+              <p class="text-danger" *ngIf="form.get('alternativo')?.touched && form.get('alternativo')?.errors?.['required']">
+                El número alternativo es requerido.
+                     </p>
+            </div>
+            <div class="mb-3 row">
+              <label for="formFile" class="form-label">Email</label>
+              <input class="form-control" type="text"  formControlName="email" [ngClass]="{'is-invalid': form.get('email')?.errors && form.get('email')?.touched, 'is-valid': form.get('email')?.errors && form.get('email')?.touched}">
+              <p class="text-danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
+                El email es requerido.
+                     </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" (click)="form.reset()">RESET</button>
+               <button class="btn btn-secondary" (click)="guardar()"[disabled]="form.invalid">Guadar</button>
+           </div>
+          </form>
+        </div> 
+      </div>
+    </div>
+  </div>
+
