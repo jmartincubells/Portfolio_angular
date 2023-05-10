@@ -28,7 +28,7 @@ import { DashexpeComponent } from './dashboard/dashexpe/dashexpe.component';
 import { DashnavbarComponent } from './dashboard/dashnavbar/dashnavbar.component';
 import { DashredesComponent } from './dashboard/dashredes/dashredes.component';
 import { DashskillsComponent } from './dashboard/dashskills/dashskills.component';
-import { DashsobremiComponent } from './dashboard/dashsobremi/dashsobremi.component';
+
 
 @NgModule({
   declarations: [
@@ -54,8 +54,7 @@ import { DashsobremiComponent } from './dashboard/dashsobremi/dashsobremi.compon
     DashexpeComponent,
     DashnavbarComponent,
     DashredesComponent,
-    DashskillsComponent,
-    DashsobremiComponent
+    DashskillsComponent
   ],
   imports: [
     BrowserModule,

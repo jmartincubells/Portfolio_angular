@@ -20,7 +20,8 @@ export class DasheducacionComponent implements OnInit {
       inicio: ["", [Validators.required]],
       fin: ["", [Validators.required]],
       especialidad: ["", [Validators.required]],
-      estado: ["", [Validators.required]]
+      estado: ["", [Validators.required]],
+      imagen: ["", [Validators.required]]
       })
   }
 

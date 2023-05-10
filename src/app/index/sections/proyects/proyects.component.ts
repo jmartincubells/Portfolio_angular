@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Proyectos } from 'src/app/model/proyectos';
 import { DatosService } from 'src/app/servicios/datos.service';
+import { ProyectosService } from 'src/app/servicios/proyecto.service';
 
 @Component({
   selector: 'app-proyects',
@@ -8,28 +10,28 @@ import { DatosService } from 'src/app/servicios/datos.service';
 })
 export class ProyectsComponent implements OnInit {
 
-  habilidades: Habilidad[]=[]; //se llama a la entidad
+  proyectos: Proyectos[]=[]; //se llama a la entidad
   
 
-  constructor(private sService: HabilidadService) { }//se llama al servicio
+  constructor(private sService: ProyectosService) { }//se llama al servicio
 
   ngOnInit(): void {
-    this.cargarHabilidad();
+    this.cargarProyectos();
     
     
   }
 
    //llamamos a los métodos
-   cargarHabilidad():void{   //no va a haber ningun retorno, solo una carga de datos
-      this.sService.list().subscribe(db => {this.habilidades=db}); // uso el this porque esta fuera del método
-      console.log(this.habilidades);
+   cargarProyectos():void{   //no va a haber ningun retorno, solo una carga de datos
+      this.sService.list().subscribe(db => {this.proyectos=db}); // uso el this porque esta fuera del método
+      console.log(this.proyectos);
   }
 
   public borrar(id:number){
     if(id != undefined){
-      this.sService.eliminarHabilidad(id).subscribe(
+      this.sService.eliminarProyectos(id).subscribe(
         data =>{
-          this.cargarHabilidad();
+          this.cargarProyectos();
         }, err =>{
           alert("No se pudo eliminar la informacion")
         }

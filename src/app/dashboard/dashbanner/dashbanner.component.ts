@@ -21,7 +21,8 @@ export class DashbannerComponent implements OnInit {
       apellido: ['', [Validators.required]],
       edad: ['', [Validators.required]],
       banner: ['', [Validators.required]],
-      titulo: ['', [Validators.required]]
+      titulo: ['', [Validators.required]],
+      info: ['', [Validators.required]]
       })
   }
 
