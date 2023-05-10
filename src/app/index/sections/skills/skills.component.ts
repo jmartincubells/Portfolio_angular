@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Habilidad } from 'src/app/model/habilidad';
 import { DatosService } from 'src/app/servicios/datos.service';
+import { HabilidadService } from 'src/app/servicios/habilidad.service';
 
 @Component({
   selector: 'app-skills',
@@ -8,22 +10,32 @@ import { DatosService } from 'src/app/servicios/datos.service';
 })
 export class SkillsComponent implements OnInit {
 
-  // datos que voy a pedir al JSON
-  skills: any;
-  more_skills: any;
-  soft_skills: any;
+  habilidades: Habilidad[]=[]; //se llama a la entidad
   
-  constructor(private datosService: DatosService) {}
 
-  
+  constructor(private sService: HabilidadService) { }//se llama al servicio
+
   ngOnInit(): void {
-    // Almacenar los datos en variables
-    this.datosService.getDatos().subscribe(info => {
-      this.skills=info.skills;
-      this.more_skills=info.skill_extra;
-      this.soft_skills=info.soft_skills;
-      
-    })
+    this.cargarHabilidad();
+    
+    
   }
 
+   //llamamos a los métodos
+   cargarHabilidad():void{   //no va a haber ningun retorno, solo una carga de datos
+      this.sService.list().subscribe(db => {this.habilidades=db}); // uso el this porque esta fuera del método
+      console.log(this.habilidades);
+  }
+
+  public borrar(id:number){
+    if(id != undefined){
+      this.sService.eliminarHabilidad(id).subscribe(
+        data =>{
+          this.cargarHabilidad();
+        }, err =>{
+          alert("No se pudo eliminar la informacion")
+        }
+      )
+    }
+  } 
 }
