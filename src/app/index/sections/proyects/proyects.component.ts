@@ -8,15 +8,33 @@ import { DatosService } from 'src/app/servicios/datos.service';
 })
 export class ProyectsComponent implements OnInit {
 
-  proyectos: any;
+  habilidades: Habilidad[]=[]; //se llama a la entidad
+  
 
-  constructor(private datosService: DatosService) { }
+  constructor(private sService: HabilidadService) { }//se llama al servicio
 
   ngOnInit(): void {
-    this.datosService.getDatos().subscribe(info => {
-      this.proyectos=info.proyectos;
-      
-    })
+    this.cargarHabilidad();
+    
+    
   }
+
+   //llamamos a los métodos
+   cargarHabilidad():void{   //no va a haber ningun retorno, solo una carga de datos
+      this.sService.list().subscribe(db => {this.habilidades=db}); // uso el this porque esta fuera del método
+      console.log(this.habilidades);
+  }
+
+  public borrar(id:number){
+    if(id != undefined){
+      this.sService.eliminarHabilidad(id).subscribe(
+        data =>{
+          this.cargarHabilidad();
+        }, err =>{
+          alert("No se pudo eliminar la informacion")
+        }
+      )
+    }
+  } 
 
 }
