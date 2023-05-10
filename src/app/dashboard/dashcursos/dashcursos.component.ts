@@ -10,7 +10,7 @@ import { CursoService } from 'src/app/servicios/curso.service';
 })
 export class DashcursosComponent implements OnInit {
   form: FormGroup;
-  id?: number;
+  id: any;
   cursitos: Curso[] = [];
   initialDate: Date = new Date();
   
@@ -35,7 +35,7 @@ export class DashcursosComponent implements OnInit {
       this.cursitos = db;
     })
     }
-    cargarDetalle(id: number) {
+    cargarDetalle(id: any) {
       this.sCurso.detail(id).subscribe(
         {
           next: (data) => {
@@ -72,7 +72,7 @@ export class DashcursosComponent implements OnInit {
         )
       }
     }
-    borrar(id: number) {
+    borrar(id: any) {
       this.sCurso.delete(id).subscribe(
         data => {
           alert("se pudo eliminar satisfactoriamente");

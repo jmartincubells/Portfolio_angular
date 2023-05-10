@@ -10,7 +10,7 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 })
 export class DasheducacionComponent implements OnInit {
   form: FormGroup;
-  id!: number;
+  id: any;
   educaciones: Educacion[] = [];
   initialDate: Date = new Date();
   constructor(private cdRef: ChangeDetectorRef, private formBuilder: FormBuilder ,private sEducacion: EducacionService) { 
@@ -34,7 +34,7 @@ export class DasheducacionComponent implements OnInit {
       this.educaciones = db;
     })
     }
-    cargarDetalle(id: number) {
+    cargarDetalle(id: any) {
       this.sEducacion.verEducacion(id).subscribe(
         {
           next: (data) => {
@@ -71,7 +71,7 @@ export class DasheducacionComponent implements OnInit {
         )
       }
     }
-    borrar(id: number) {
+    borrar(id: any) {
       this.sEducacion.eliminarEducacion(id).subscribe(
         data => {
           alert("se pudo eliminar satisfactoriamente");
