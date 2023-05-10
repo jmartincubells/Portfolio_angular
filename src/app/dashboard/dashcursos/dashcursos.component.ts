@@ -10,7 +10,7 @@ import { CursoService } from 'src/app/servicios/curso.service';
 })
 export class DashcursosComponent implements OnInit {
   form: FormGroup;
-  id: number;
+  id?: number;
   cursitos: Curso[] = [];
   initialDate: Date = new Date();
   

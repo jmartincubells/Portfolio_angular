@@ -7,7 +7,7 @@ import { Datopersonal } from '../model/datopersonal';
   providedIn: 'root'
 })
 export class DatopersonalService {
-  url= "https://localhost:8080/datopersonal/"
+  url= "http://localhost:8080/datopersonal/"
   constructor(private httpClient:HttpClient) { }
 
   public list(): Observable<Datopersonal[]>{

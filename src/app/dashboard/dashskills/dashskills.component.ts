@@ -15,7 +15,7 @@ export class DashskillsComponent implements OnInit {
  form: FormGroup;
  skills: Habilidad[]=[];
  lenguaje: any;
- id?:number;
+ id:any;
   constructor(
     //Inyectar el Servicio para tener acceso en la clase a los Métodos
     private http: HttpClient,
@@ -69,7 +69,7 @@ export class DashskillsComponent implements OnInit {
       this.listarItems();
     }
 
-    cargar(id: number){
+    cargar(id: any){
       this.hService.verHabilidad(id).subscribe({
           next: (data) => {
             this.form.setValue(data);
@@ -105,7 +105,7 @@ export class DashskillsComponent implements OnInit {
         }
       }
 
-      borrar(id: number) {
+      borrar(id: any) {
         if (confirm("Confirme si desea eliminar este ítem")) {
           this.hService.eliminarHabilidad(id).subscribe(data => {});
           window.location.reload();

@@ -10,7 +10,7 @@ import { EducacionService } from 'src/app/servicios/educacion.service';
 })
 export class DasheducacionComponent implements OnInit {
   form: FormGroup;
-  id: number;
+  id!: number;
   educaciones: Educacion[] = [];
   initialDate: Date = new Date();
   constructor(private cdRef: ChangeDetectorRef, private formBuilder: FormBuilder ,private sEducacion: EducacionService) { 

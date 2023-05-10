@@ -10,7 +10,7 @@ import { ExperienciaService } from 'src/app/servicios/experiencia.service';
 })
 export class DashexpeComponent implements OnInit {
   form: FormGroup;
-  id: number;
+  id: any;
   experiencias: Experiencia[] = [];
   initialDate: Date = new Date();
   constructor(private cdRef: ChangeDetectorRef, private formBuilder: FormBuilder,private sExperiencia: ExperienciaService) {
@@ -35,7 +35,7 @@ this.sExperiencia.list().subscribe(db =>{
 })
 }
 
-cargarDetalle(id: number) {
+cargarDetalle(id: any) {
   this.sExperiencia.verExperiencia(id).subscribe(
     {
       next: (data) => {
@@ -72,7 +72,7 @@ guardar() {
     )
   }
 }
-borrar(id: number) {
+borrar(id: any) {
   this.sExperiencia.eliminarExperiencia(id).subscribe(
     data => {
       alert("se pudo eliminar satisfactoriamente");

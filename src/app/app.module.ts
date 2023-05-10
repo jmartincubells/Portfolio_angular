@@ -23,6 +23,12 @@ import { ModalRegisterComponent } from './modals/modal-register/modal-register.c
 import { DashbannerComponent } from './dashboard/dashbanner/dashbanner.component';
 import { DashcursosComponent } from './dashboard/dashcursos/dashcursos.component';
 import { DashdatosperComponent } from './dashboard/dashdatosper/dashdatosper.component';
+import { DasheducacionComponent } from './dashboard/dasheducacion/dasheducacion.component';
+import { DashexpeComponent } from './dashboard/dashexpe/dashexpe.component';
+import { DashnavbarComponent } from './dashboard/dashnavbar/dashnavbar.component';
+import { DashredesComponent } from './dashboard/dashredes/dashredes.component';
+import { DashskillsComponent } from './dashboard/dashskills/dashskills.component';
+import { DashsobremiComponent } from './dashboard/dashsobremi/dashsobremi.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,12 @@ import { DashdatosperComponent } from './dashboard/dashdatosper/dashdatosper.com
     DashcursosComponent,
     DashdatosperComponent,
     DashdatosperComponent,
-    das
+    DasheducacionComponent,
+    DashexpeComponent,
+    DashnavbarComponent,
+    DashredesComponent,
+    DashskillsComponent,
+    DashsobremiComponent
   ],
   imports: [
     BrowserModule,

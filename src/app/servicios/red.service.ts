@@ -7,7 +7,7 @@ import { Red } from '../model/red';
   providedIn: 'root'
 })
 export class RedService {
-  url= "https://localhost:8080/red/"
+  url= "http://localhost:8080/red/"
 
   constructor(private httpClient:HttpClient) { }
 

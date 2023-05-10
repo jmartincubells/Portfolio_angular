@@ -10,7 +10,7 @@ import { DatopersonalService } from 'src/app/servicios/datopersonal.service';
 })
 export class DashdatosperComponent implements OnInit {
   form: FormGroup;
-  id: number;
+  id?: number;
   datosper: Datopersonal[] = [];
   constructor(private formBuilder: FormBuilder , private dpService: DatopersonalService) { 
     this.form = this.formBuilder.group({

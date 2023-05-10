@@ -10,7 +10,7 @@ import { PersonaService } from 'src/app/servicios/persona.service';
 })
 export class DashbannerComponent implements OnInit {
   form: FormGroup;
-  id: number;
+  id?: number;
   personas: Persona[] = [];
   
 
@@ -37,7 +37,7 @@ export class DashbannerComponent implements OnInit {
     )
   }
   cargarDetalle(id: number) {
-    this.pService.verPersona(id).subscribe(
+    this.pService.verPersona(id!).subscribe(
       {
         next: (db) => {
           this.form.setValue(db);

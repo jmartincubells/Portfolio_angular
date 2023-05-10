@@ -7,7 +7,7 @@ import { Curso } from '../model/curso';
   providedIn: 'root'
 })
 export class CursoService {
-  url= "https://localhost:8080/curso/"
+  url= "http://localhost:8080/curso/"
   constructor(private httpClient:HttpClient) { }
 
   public list(): Observable<Curso[]>{

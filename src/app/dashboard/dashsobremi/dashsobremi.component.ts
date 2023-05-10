@@ -10,7 +10,7 @@ import { SobremiService } from 'src/app/servicios/sobremi.service';
 })
 export class DashsobremiComponent implements OnInit {
   form: FormGroup;
-  id: number;
+  id: any;
   info: string = '';
   imagen: string = '';
   fondo: string = '';
@@ -34,7 +34,7 @@ export class DashsobremiComponent implements OnInit {
       })
   }
 
-  cargarDetalle(id: number) {
+  cargarDetalle(id: any) {
     this.sService.verSobremi(id).subscribe(
       {
         next: (db) => {
@@ -72,7 +72,7 @@ export class DashsobremiComponent implements OnInit {
       )
     }
   }
-  borrar(id: number) {
+  borrar(id: any) {
     this.sService.eliminarSobremi(id).subscribe(
       data => {
         alert("se pudo eliminar satisfactoriamente");

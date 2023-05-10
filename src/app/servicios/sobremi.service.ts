@@ -7,7 +7,7 @@ import { Sobremi } from '../model/sobremi';
   providedIn: 'root'
 })
 export class SobremiService {
-  url= "https://localhost:8080/sobremi/"
+  url= "http://localhost:8080/sobremi/"
   constructor(private httpClient:HttpClient) { }
 
   // lista
