@@ -12,15 +12,15 @@
         <form [formGroup]="register_form" (ngSubmit)="onEnviar($event)" id="register_form">
           <div class="modal-body">
   
-            <div class="mb-3">
+           <!--  <div class="mb-3">
               <label for="usernameLogin" class="form-label"><i>Username</i></label>
               <input type="text" formControlName="username" id="usernameLogin" placeholder="  Username" class="col-12" [class.border-danger]="UsernameInvalid" aria-describedby="usernameHelp">
               <div *ngIf="Username?.errors  && Username?.touched" class="mb-4">
                 <small *ngIf="Username?.hasError('required')" class="error text-small"><i>Username requerido.</i></small>
-                <!-- puede haber un error por usar el supuesto or -->
+                
                 <small *ngIf="Username?.hasError('minlength') || Username?.hasError('maxlength')" class="error text-small"><i>Debe tener entre 6 y 20 caracteres.</i></small>
               </div>
-            </div>
+            </div> -->
   
             <div class="mb-3">
               <label for="emailLogin" class="form-label"><i>Email</i></label>

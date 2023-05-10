@@ -6,14 +6,16 @@ export class Educacion {
     fin: string;
     especialidad: string;
     estado: string;
+    imagen: string;
     
 
-constructor(institucion: string,inicio: string, fin: string, especialidad: string, estado: string) {
+constructor(imagen: string,institucion: string,inicio: string, fin: string, especialidad: string, estado: string) {
         this.institucion = institucion;
         this.inicio = inicio;
         this.fin = fin;
         this.especialidad = especialidad;
         this.estado = estado;
+        this.imagen = imagen;
     }
     
 }

@@ -3,16 +3,13 @@
         <img src="assets/icons/worldface-spanish-guy-in-white-background.jpg" class="img-fluid" alt="">
     </div>
     <div class="col-8">
-        <h5>Desarrollador Web</h5>
-        <p class="fst-italic">SobreMi</p>
-        <div class="row no-center">
+        <h5>Sobre mi</h5>
+        <div class="row no-center" *ngFor="let datos of sobremis">
             <div class="col-lg-6">
                 <ul>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Fecha de Nacimiento:</strong> <span>27
-                            de Febrero de
-                            2004</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span>18</span></li>
-                    <li><i class="bi bi-chevron-right"></i> <strong>Nivel:</strong> <span>Junior</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Fecha de Nacimiento:</strong><span> {{datos.fechanacimiento}}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Edad:</strong> <span> {{datos.edad}}</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Nivel:</strong> <span>{{datos.nivel}}</span></li>
                 </ul>
             </div>
             <div class="col-lg-6">

@@ -22,7 +22,7 @@ import { ContactComponent } from './index/sections/contact/contact.component';
 import { ModalRegisterComponent } from './modals/modal-register/modal-register.component';
 import { DashbannerComponent } from './dashboard/dashbanner/dashbanner.component';
 import { DashcursosComponent } from './dashboard/dashcursos/dashcursos.component';
-import { DashdatosperComponent } from './dashboard/dashdatosper/dashdatosper.component';
+
 import { DasheducacionComponent } from './dashboard/dasheducacion/dasheducacion.component';
 import { DashexpeComponent } from './dashboard/dashexpe/dashexpe.component';
 import { DashnavbarComponent } from './dashboard/dashnavbar/dashnavbar.component';
@@ -50,8 +50,6 @@ import { DashsobremiComponent } from './dashboard/dashsobremi/dashsobremi.compon
     ModalRegisterComponent,
     DashbannerComponent,
     DashcursosComponent,
-    DashdatosperComponent,
-    DashdatosperComponent,
     DasheducacionComponent,
     DashexpeComponent,
     DashnavbarComponent,

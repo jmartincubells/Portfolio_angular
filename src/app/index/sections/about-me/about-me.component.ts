@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Sobremi } from 'src/app/model/sobremi';
+import { Persona } from 'src/app/model/persona';
 import { DatosService } from 'src/app/servicios/datos.service';
-import { SobremiService } from 'src/app/servicios/sobremi.service';
+import { PersonaService } from 'src/app/servicios/persona.service';
 
 @Component({
   selector: 'app-about-me',
@@ -9,23 +9,26 @@ import { SobremiService } from 'src/app/servicios/sobremi.service';
   styleUrls: ['./about-me.component.css']
 })
 export class AboutMeComponent implements OnInit {
-  sobremis: Sobremi[]=[] //se llama a la entidad
+  sobremis: Persona[]=[]; //se llama a la entidad
   
 
-  constructor(private sService: SobremiService) { }//se llama al servicio
+  constructor(private sService: PersonaService) { }//se llama al servicio
 
   ngOnInit(): void {
     this.cargarSobremi();
+    
+    
   }
 
    //llamamos a los métodos
-   public cargarSobremi():void{   //no va a haber ningun retorno, solo una carga de datos
-    this.sService.list().subscribe(db => {this.sobremis=db}); // uso el this porque esta fuera del método
+    cargarSobremi():void{   //no va a haber ningun retorno, solo una carga de datos
+      this.sService.list().subscribe(db => {this.sobremis=db}); // uso el this porque esta fuera del método
+      console.log(this.sobremis);
   }
 
   public borrar(id:number){
     if(id != undefined){
-      this.sService.eliminarSobremi(id).subscribe(
+      this.sService.eliminarPersona(id).subscribe(
         data =>{
           this.cargarSobremi();
         }, err =>{
@@ -33,6 +36,6 @@ export class AboutMeComponent implements OnInit {
         }
       )
     }
-  }
+  } 
 
 } 

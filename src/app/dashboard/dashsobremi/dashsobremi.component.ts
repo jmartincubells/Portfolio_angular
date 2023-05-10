@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Sobremi } from 'src/app/model/sobremi';
-import { SobremiService } from 'src/app/servicios/sobremi.service';
+import { Persona } from 'src/app/model/persona';
+import { PersonaService } from 'src/app/servicios/persona.service';
 
 @Component({
   selector: 'app-dashsobremi',
@@ -14,8 +14,8 @@ export class DashsobremiComponent implements OnInit {
   info: string = '';
   imagen: string = '';
   fondo: string = '';
-  sobremis: Sobremi[] = [];
-  constructor(private formBuilder: FormBuilder, private sService: SobremiService) {
+  sobremis: Persona[] = [];
+  constructor(private formBuilder: FormBuilder, private sService: PersonaService) {
     this.form = this.formBuilder.group({
       id: [],
       info: ['', [Validators.required]],
@@ -26,6 +26,8 @@ export class DashsobremiComponent implements OnInit {
 
   ngOnInit() {
     this.cargarSobremi();
+    console.log(this.sobremis);
+    
   }
   cargarSobremi(): void {
     this.sService.list().subscribe(
@@ -35,7 +37,7 @@ export class DashsobremiComponent implements OnInit {
   }
 
   cargarDetalle(id: any) {
-    this.sService.verSobremi(id).subscribe(
+    this.sService.verPersona(id).subscribe(
       {
         next: (db) => {
           this.form.setValue(db);
@@ -55,7 +57,7 @@ export class DashsobremiComponent implements OnInit {
     console.log()
 
     if (about.id == '') {
-      this.sService.agregarSobremi(about).subscribe(
+      this.sService.agregarPersona(about).subscribe(
         db => {
           alert("Sobre mi añadido correctamente");
           this.cargarSobremi();
@@ -63,7 +65,7 @@ export class DashsobremiComponent implements OnInit {
         }
       )
     } else {
-      this.sService.updateSobremi(about).subscribe(
+      this.sService.updatePersona(about).subscribe(
         db => {
           alert("Sobremi editado!!!");
           this.cargarSobremi();
@@ -73,7 +75,7 @@ export class DashsobremiComponent implements OnInit {
     }
   }
   borrar(id: any) {
-    this.sService.eliminarSobremi(id).subscribe(
+    this.sService.eliminarPersona(id).subscribe(
       data => {
         alert("se pudo eliminar satisfactoriamente");
         this.cargarSobremi();

@@ -18,7 +18,7 @@ export class ModalRegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {
     this.register_form = this.formBuilder.group(
       {
-        username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+        /* username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]], */
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
       },
@@ -30,12 +30,12 @@ export class ModalRegisterComponent implements OnInit {
   }
 
   //estos son todos métodos
-  get Username() {
+  /* get Username() {
     return this.register_form.get("username");
   }
   get UsernameInvalid() {
     return this.Username?.touched && !this.Username?.valid;
-  }
+  } */
   get Mail() {
     return this.register_form.get("email");
   }
