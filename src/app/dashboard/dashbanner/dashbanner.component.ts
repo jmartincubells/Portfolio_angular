@@ -10,7 +10,7 @@ import { PersonaService } from 'src/app/servicios/persona.service';
 })
 export class DashbannerComponent implements OnInit {
   form: FormGroup;
-  id?: number;
+  id: any;
   personas: Persona[] = [];
   
 
@@ -36,7 +36,7 @@ export class DashbannerComponent implements OnInit {
       }
     )
   }
-  cargarDetalle(id: number) {
+  cargarDetalle(id: any) {
     this.pService.verPersona(id!).subscribe(
       {
         next: (db) => {
@@ -74,7 +74,7 @@ export class DashbannerComponent implements OnInit {
     }
   }
 
-  borrar(id: number) {
+  borrar(id: any) {
     this.pService.eliminarPersona(id).subscribe(
       db => {
         alert("se pudo eliminar satisfactoriamente")

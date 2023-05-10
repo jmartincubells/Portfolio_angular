@@ -10,7 +10,7 @@ import { DatopersonalService } from 'src/app/servicios/datopersonal.service';
 })
 export class DashdatosperComponent implements OnInit {
   form: FormGroup;
-  id?: number;
+  id: any;
   datosper: Datopersonal[] = [];
   constructor(private formBuilder: FormBuilder , private dpService: DatopersonalService) { 
     this.form = this.formBuilder.group({
@@ -35,7 +35,7 @@ export class DashdatosperComponent implements OnInit {
       this.datosper = db;
     })
     }
-    cargarDetalle(id: number) {
+    cargarDetalle(id: any) {
       this.dpService.verDatopersonal(id).subscribe(
         {
           next: (data) => {
@@ -74,7 +74,7 @@ export class DashdatosperComponent implements OnInit {
       }
     }
 
-    borrar(id: number) {
+    borrar(id: any) {
       this.dpService.eliminarDatopersonal(id).subscribe(
         data => {
           alert("se pudo eliminar satisfactoriamente");
