@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Persona } from 'src/app/model/persona';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-modal-register',
@@ -8,22 +12,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class ModalRegisterComponent implements OnInit {
-  register_form!: FormGroup;
-  /*   username!: FormControl;
-    email!: FormControl;
-    password!: FormControl; */
+  register_form: FormGroup;
+  email = '';
+  password = '';
 
-  submitted = false;
+  // authService: any;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.register_form = this.formBuilder.group(
-      {
-        /* username: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]], */
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
-      },
-      /* {validators: [Validation.match('password', 'confirmPassword')]} */
-    );
+  persona: Persona = new Persona("", "","", "","", "","", "","", "","", "","", "");
+
+  //Inyectar en el constructor el formBuilder
+  constructor(private formBuilder: FormBuilder, private autenticarService: AuthService, private ruta: Router) {
+    //Creamos el grupo de controles para el formulario de login
+    this.register_form = this.formBuilder.group({
+
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+    })
   }
 
   ngOnInit(): void {
@@ -51,23 +55,33 @@ export class ModalRegisterComponent implements OnInit {
   }
 
   onEnviar(event: Event) {
-    // Detenemos la propagación o ejecución del comportamiento submit de un form
-    event.preventDefault;
-
+    //console.log(this.register_form);
+    
+    event.preventDefault();
     if (this.register_form.valid) {
-      // Llamamos a nuestro servicio para enviar los datos al servidor
-      // También podríamos ejecutar alguna lógica extra
-      alert("Todo en orden. Ya puede enviar su formulario.");
+      console.log(JSON.stringify(this.register_form.value));
+      this.autenticarService.loginUser(this.register_form.value).subscribe(db => {
+        console.log("DATA: " + JSON.stringify(db.id));
+        if (db.id) {
+          alert("Puedes editar el portfolio");
+          this.ruta.navigate(['/dashboard']);
+          this.register_form.reset()
+        } else {
+          alert("Error al iniciar sesión, credenciales no válidas!!!");
+        }
+      }, err => {
+        alert("ERROR!!!");
+      })
     } else {
-      // Corremos todas las validaciones para que se ejecuten los mensajes de error en el template     
-      this.register_form.markAllAsTouched()
-      alert("Revise su formulario.");
+      sessionStorage.setItem('currentUser', "");
+      alert("Error! No tienes acceso");
+      this.ruta.navigate(['/']);
     }
-  }
 
+
+  }
   onReset(): void {
-    this.submitted = false;
+
     this.register_form.reset();
   }
-
 }

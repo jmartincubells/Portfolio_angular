@@ -2,8 +2,8 @@ export class Proyectos {
     id?: number;
     imagen: string;
     proyecto: string;    
-   descripcion: string;
-   urlGithub: string;
+    descripcion: string;
+    urlGithub: string;
 
    
 constructor(imagen: string, proyecto: string, urlGithub: string, descripcion: string) {

@@ -4,7 +4,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModal">Datos User</h5>
+        <h5 class="modal-title" id="exampleModal">Datos Usuario</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -75,22 +75,6 @@
             </p>
           </div> -->
           <div class="mb-3 row">
-            <label for="formFile" class="form-label">Email</label>
-            <input class="form-control" type="text" formControlName="email"
-              [ngClass]="{'is-invalid': form.get('email')?.errors && form.get('email')?.touched, 'is-valid': form.get('email')?.errors && form.get('email')?.touched}">
-            <p class="text-danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
-              El email es requerido.
-            </p>
-          </div>
-          <div class="mb-3 row">
-            <label for="formFile" class="form-label">Password</label>
-            <input class="form-control" type="text" formControlName="password"
-              [ngClass]="{'is-invalid': form.get('password')?.errors && form.get('password')?.touched, 'is-valid': form.get('password')?.errors && form.get('password')?.touched}">
-            <p class="text-danger" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
-              La contraseña es requerida.
-            </p>
-          </div>
-          <div class="mb-3 row">
             <label for="formFile" class="form-label">Info</label>
             <input class="form-control" type="text" formControlName="info"
               [ngClass]="{'is-invalid': form.get('info')?.errors && form.get('info')?.touched, 'is-valid': form.get('info')?.errors && form.get('info')?.touched}">
@@ -123,6 +107,24 @@
             <label for="formFile" class="form-label">Nivel</label>
             <input class="form-control" type="text" formControlName="nivel"
               [ngClass]="{'is-invalid': form.get('nivel')?.errors && form.get('nivel')?.touched, 'is-valid': form.get('nivel')?.errors && form.get('nivel')?.touched}">
+          </div>
+          <hr class="container w-75">
+          <p>Incio de Sesion</p>
+          <div class="mb-3 row">
+            <label for="formFile" class="form-label">Email</label>
+            <input class="form-control" type="text" formControlName="email"
+              [ngClass]="{'is-invalid': form.get('email')?.errors && form.get('email')?.touched, 'is-valid': form.get('email')?.errors && form.get('email')?.touched}">
+            <p class="text-danger" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
+              El email es requerido.
+            </p>
+          </div>
+          <div class="mb-3 row">
+            <label for="formFile" class="form-label">Password</label>
+            <input class="form-control" type="text" formControlName="password"
+              [ngClass]="{'is-invalid': form.get('password')?.errors && form.get('password')?.touched, 'is-valid': form.get('password')?.errors && form.get('password')?.touched}">
+            <p class="text-danger" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']">
+              La contraseña es requerida.
+            </p>
           </div>
 
           <div class="modal-footer">
