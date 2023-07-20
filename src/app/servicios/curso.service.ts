@@ -7,7 +7,7 @@ import { Curso } from '../model/curso';
   providedIn: 'root'
 })
 export class CursoService {
-  url= "http://localhost:8080/curso/"
+  url= "https://portfoliobkd.onrender.com/curso/"
   constructor(private httpClient:HttpClient) { }
 
   public list(): Observable<Curso[]>{

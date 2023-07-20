@@ -7,7 +7,7 @@ import { Red } from '../model/red';
   providedIn: 'root'
 })
 export class RedService {
-  url= "http://localhost:8080/red/"
+  url= "https://portfoliobkd.onrender.com/red/"
 
   constructor(private httpClient:HttpClient) { }
 
